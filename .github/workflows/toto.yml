@@ -20,7 +20,7 @@ jobs:
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.AAA }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         repository: kalidux/totopub
         branch: main
         force: true
