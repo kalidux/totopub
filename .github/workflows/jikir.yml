@@ -2,7 +2,7 @@ name: Mirror Repository2
 
 on:
   push:
-    branches-ignore:
+    branches:
       - 'main' # Ignoring 'main' to avoid infinite loop of mirroring
 
 jobs:
