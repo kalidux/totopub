@@ -1,9 +1,7 @@
 name: Mirror Repository
 
 on:
-  push:
-    branches:
-      - main 
+  workflow_dispatch:
       
 
 jobs:
