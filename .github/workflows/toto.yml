@@ -1,0 +1,31 @@
+name: Mirror Repository
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Filter 
+      run: |
+        git filter-repo --path .github/workflows --path infrastructure --invert-paths
+
+    - name: Set up Git user
+      run: |
+        git config --local user.email "kalid@axelar.network"
+        git config --local user.name "kalid"
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        repository: kalidux/totopub
+        branch: main
+        force: true
