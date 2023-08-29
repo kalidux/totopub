@@ -1,0 +1,33 @@
+name: Mirror Repository2
+
+on:
+  push:
+    branches-ignore:
+      - 'main' # Ignoring 'main' to avoid infinite loop of mirroring
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+         persist-credentials: false
+         fetch-depth: 0
+
+    - name: Set up Git user
+      run: |
+        git config --local user.email "kalid@toto.com"
+        git config --local user.name "kalid"
+
+    - name: Mirror All Branches
+      env:
+        DEST_REPO: kalidux/totopub
+        ACCESS_TOKEN: ${{ secrets.CHAT }}
+      run: |
+        git fetch --all
+        for branch in $(git branch -r | grep -v HEAD); do
+            git checkout ${branch#origin/}
+            git push --mirror https://$ACCESS_TOKEN@github.com/$DEST_REPO.git
+        done
