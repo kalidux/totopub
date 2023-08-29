@@ -13,13 +13,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Filter 
-      run: |
-        git filter-repo --path .github/workflows --path infrastructure --invert-paths
-
     - name: Set up Git user
       run: |
-        git config --local user.email "kalid@axelar.network"
+        git config --local user.email "kalid@toto.com"
         git config --local user.name "kalid"
 
     - name: Push changes
