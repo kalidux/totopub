@@ -20,7 +20,7 @@ jobs:
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
-        github_token: ${{ secrets.PEPE }}
+        github_token: ${{ secrets.PAPI }}
         repository: kalidux/totopub
         force: true
 
