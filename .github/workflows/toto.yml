@@ -27,5 +27,6 @@ jobs:
       with:
         github_token: ${{ secrets.CHAT }}
         repository: kalidux/totopub
+        branch: main
         force: true
 
