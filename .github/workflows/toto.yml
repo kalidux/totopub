@@ -1,7 +1,9 @@
 name: Mirror Repository
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - '*'
       
 
 jobs:
@@ -25,5 +27,6 @@ jobs:
       with:
         github_token: ${{ secrets.CHAT }}
         repository: kalidux/totopub
+        branch: ${{ github.ref }}
         force: true
 
